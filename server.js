@@ -4,9 +4,15 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
-app.use(express.json({ limit: '10mb' })); 
-mongoose.connect('mongodb+srv://goldnet:GoldNet2025CR@goldnet.poqccbo.mongodb.net/goldnetdb?retryWrites=true&w=majority').then(() => console.log('MongoDB conectado')).catch(err => console.log('Error MongoDB:', err));
+app.use(express.json({ limit: '10mb' }));
 
+// CONEXIÓN A MONGO
+mongoose.connect('mongodb+srv://goldnet:GoldNet2025CR@goldnet.poqccbo.mongodb.net/goldnetdb?retryWrites=true&w=majority')
+  .then(() => console.log('MongoDB conectado'))
+  .catch(err => console.log('Error MongoDB:', err));
+
+// ESQUEMA DEL USUARIO
+const userSchema = new mongoose.Schema({
   cedula: { type: String, unique: true, required: true },
   nombre: String,
   primerApellido: String,
