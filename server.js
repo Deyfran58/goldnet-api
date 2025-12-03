@@ -5,14 +5,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' })); 
-mongoose.connect('mongodb+srv://goldnet:GoldNet2025CR@goldnet.poqccbo.mongodb.net/goldnetdbh?retryWrites=true&w=majority')
-  .then(() => console.log('MongoDB conectado'))
-  .catch(err => console.log('Error MongoDB:', err));
+mongoose.connect('mongodb+srv://goldnet:GoldNet2025CR@goldnet.poqccbo.mongodb.net/goldnetdb?retryWrites=true&w=majority').then(() => console.log('MongoDB conectado')).catch(err => console.log('Error MongoDB:', err));
 
-.then(() => console.log('MongoDB conectado'))
-.catch(err => console.log(err));
-
-const userSchema = new mongoose.Schema({
   cedula: { type: String, unique: true, required: true },
   nombre: String,
   primerApellido: String,
